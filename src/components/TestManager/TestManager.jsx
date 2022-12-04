@@ -1,12 +1,16 @@
 import { Box } from '@mui/material'
-import React from 'react'
-import Tabel from './components/Tabel'
+import React, { lazy, Suspense } from 'react'
+const Table = lazy(() => import('./components/Table'));
 
 export default function TestManager() {
     return (
         <>
-            <div>Test Manager</div>
-            <Tabel />
+            <Box>
+                <Suspense fallback={<><h1>...Loading</h1></>} >
+                    <Table />
+                </Suspense>
+            </Box>
+
         </>
     )
 }
