@@ -11,7 +11,13 @@ export default function Result() {
     }, [searchParams]);
 
     if (!testId) return (
-        <SearchTest title="Search by Test Id" label="Enter Test Id" searchFor={(search) => setSearchParams({ test_id: search })} />
+        <SearchTest
+            title="Search by Test Id"
+            label="Enter Test Id"
+            searchFor={(search) => {
+                setSearchParams({ test_id: search })
+            }}
+        />
     );
 
     return (

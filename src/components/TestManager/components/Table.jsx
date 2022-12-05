@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import dayjs from 'dayjs';
 import { Box, Button, Menu, MenuItem } from '@mui/material';
 
 import {
     DataGrid,
     GridToolbar,
 } from '@mui/x-data-grid';
-import Pagination from '@mui/material/Pagination';
 
 import testPapers from '../../../../testPapers';
 import { Link } from 'react-router-dom';
+import { formatDateReadable } from '../../generalApi';
 
 const GridColumnsTestPapers = [
     {
@@ -25,8 +24,8 @@ const GridColumnsTestPapers = [
     },
     { field: '_id', headerName: 'Test ID', width: 250, hide: true, renderCell: params => params.row._id.$oid },
     { field: 'title', headerName: 'Test Name', flex: 1 },
-    { field: 'startDate', headerName: 'Start Date', width: 200, renderCell: params => dayjs(params.row.startDate).format('MMM D, YYYY h:mm A') },
-    { field: 'endDate', headerName: 'End Date', width: 200, renderCell: params => dayjs(params.row.endDate).format('MMM D, YYYY h:mm A') },
+    { field: 'startDate', headerName: 'Start Date', width: 200, renderCell: params => formatDateReadable(params.row.startDate) },
+    { field: 'endDate', headerName: 'End Date', width: 200, renderCell: params => formatDateReadable(params.row.endDate) },
     {
         field: 'status',
         headerName: 'Status',
@@ -128,7 +127,9 @@ function UserActions({ rowData }) {
                         }
                     >Edit Test</MenuItem>
                     <MenuItem
-                        onClick={handleClose}
+                        onClick={
+                            handleClose
+                        }
                     >Delete Test</MenuItem>
                 </Menu>
             </Box>

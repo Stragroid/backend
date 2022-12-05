@@ -139,3 +139,10 @@ export const subNavBarColors = {
     subNavlinkSelectedBackground: 'lightblue',
     subNavlinkBackground: 'none'
 }
+
+export const viewTest = {
+    tile: {
+        background: 'lightblue',
+        color: 'black'
+    }
+}
